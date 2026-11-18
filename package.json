@@ -1,0 +1,74 @@
+{
+  "name": "japanese-dictionary",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron": "electron .",
+    "electron:compile": "tsc -p electron/tsconfig.json",
+    "electron:dev": "concurrently \"vite dev --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && npm run electron:compile && electron .\"",
+    "electron:build": "npm run build && electron-builder",
+    "electron:build:win": "npm run build && electron-builder --win",
+    "electron:build:mac": "npm run build && electron-builder --mac",
+    "electron:build:linux": "npm run build && electron-builder --linux",
+    "build:database": "tsx scripts/build-database.ts",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sveltejs/adapter-static": "^4.0.1",
+    "better-sqlite3": "^12.0.0",
+    "kuromoji": "^0.1.2",
+    "lucide-svelte": "^0.468.0"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^8.0.1",
+    "@sveltejs/kit": "^3.2.1",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/kuromoji": "^0.1.3",
+    "@types/node": "^22.0.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "electron": "^45.3.3",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.5.0",
+    "svelte": "^5.57.3",
+    "svelte-check": "^4.7.8",
+    "tailwindcss": "^4.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8",
+    "wait-on": "^8.0.0"
+  },
+  "main": "electron/main.ts",
+  "build": {
+    "appId": "com.personal.japanesedictionary",
+    "productName": "Japanese Dictionary",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
