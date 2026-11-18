@@ -1,0 +1,38 @@
+estou montando um app dicionário de japonês para estudo.
+quero montar uma lista na página inicial com as 2000 palavras mais utilizadas, listas separadas em tab, em jornal, palavras estrangeiras e outros que forem fornecidos pelos dicionários
+
+a lista deve ter a palavra e um exemplo de frase. ao clicar na linha da tabela deve abrir uma página de detalhe 50% da tela a direita com detalhes da palavra, mais exemplos de frase e outras informações disponíveis nos dicionários
+
+utilizamos os dicionários em json + kuromoji
+jmdict, kanjidic2, kuromoji, tatoeba(convertido em json)
+formato do tatoeba:
+{
+  "id": 123,
+  "translationId": 456,
+  "japanese": "私は寿司を食べます。",
+  "english": "I eat sushi.",
+  "source": "Tatoeba",
+  "license": "CC BY 2.0 FR"
+}
+
+nosso stack:
+@sveltejs/adapter-static
+@sveltejs/adapter-auto
+@sveltejs/kit
+@sveltejs/vite-plugin-svelte
+@tailwindcss/vite
+@types/better-sqlite3
+@types/kuromoji
+@types/node
+autoprefixer
+concurrently
+electron
+electron
+postcss
+svelte
+svelte
+tailwindcss
+tsx
+typescript
+vite
+wait-on
